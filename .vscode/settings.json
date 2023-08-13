@@ -1,0 +1,15 @@
+
+{
+    "json.schemaDownload.enable": true,
+    "terminal.integrated.cwd": "${workspaceFolder}",
+    "python.analysis.inlayHints.functionReturnTypes": true,
+    "python.analysis.inlayHints.variableTypes": true,
+    // Mypy configuration
+    "mypy.workingDirectory": "",
+    "python.testing.cwd": "${workspaceFolder}",
+    "python.terminal.activateEnvInCurrentTerminal": true,
+    "python.testing.pytestArgs": [],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "todo-tree.tree.scanMode": "workspace"
+}
