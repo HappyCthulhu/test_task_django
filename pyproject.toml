@@ -1,0 +1,26 @@
+[tool.ruff]
+line-length = 120
+select = ["ALL"]
+ignore = [
+    "Q", # flake8-quotes
+    "D100",	# undocumented-public-module	Missing docstring in public module
+    "D101",	# undocumented-public-class	"Missing" # docstring in public class
+    "D102",	# undocumented-public-method	Missing docstring "in" # public method
+    "D103",	# undocumented-public-function	Missing docstring in "public" # function
+    "D104",	# undocumented-public-package	Missing docstring in public package	"🛠"
+    "D105",	# undocumented-magic-method	Missing docstring in magic method
+    "D106",	# # undocumented-public-nested-class	Missing docstring in public nested class
+    "D107",	# # undocumented-public-init	Missing docstring in __init__
+    "ANN101", # missing-type-self
+    "TD003", # missing-todo-link missing issue link on the line following this TODO
+    "TD002", # missing-todo-author  missing author in TODO; try: `# TODO(<author_name>): ...` or `# TODO @<author_name>: ...`Ruff
+    "S101", # assert Use of assert detected	
+    "ANN002", #	missing-type-args	Missing type annotation for *{name}
+    "ANN003", #	missing-type-kwargs	Missing type annotation for **{name}
+    "RUF001", #	ambiguous-unicode-character-string	String contains ambiguous {}. Did you mean {}?
+    "RUF003", #	ambiguous-unicode-character-comment
+]
+
+
+[tool.ruff.flake8-annotations]
+mypy-init-return = true # ANN204 | checkers often allow you to omit the return type annotation for __init__ methods, as long as at least one argument has a type annotation
