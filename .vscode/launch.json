@@ -1,0 +1,40 @@
+{
+"version": "0.2.0",
+"configurations": [
+    {
+        "name": "Django",
+        "type": "python",
+        "request": "launch",
+        "cwd": "${workspaceFolder}",
+        "program": "manage.py",
+        "args": [
+            "runserver",
+            "localhost:8000"
+        ],
+        "django": true,
+        "justMyCode": false
+    },
+    {
+        "name": "Migrate",
+        "type": "python",
+        "request": "launch",
+        "cwd": "${workspaceFolder}",
+        "program": "manage.py",
+        "args": [
+            "migrate"
+        ],
+        "django": true,
+    },
+    {
+        "name": "Create SuperUser",
+        "type": "python",
+        "request": "launch",
+        "cwd": "${workspaceFolder}",
+        "program": "manage.py",
+        "args": [
+            "createsuperuser"
+        ],
+        "django": true,
+    },
+]
+}

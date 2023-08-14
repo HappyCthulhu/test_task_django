@@ -4,16 +4,22 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-pyjwt = "*"
 djangorestframework = "*"
 django = "*"
 drf-spectacular = "*"
+djangorestframework-simplejwt = "*"
+pillow = "*"
 
 [dev-packages]
 ruff = "*"
 mypy = "*"
 djangorestframework-stubs = {version = "*", extras = ["compatible-mypy"]}
 django-stubs = {version = "*", extras = ["compatible-mypy"]}
+types-markdown = "*"
+types-pygments = "*"
+types-psycopg2 = "*"
+types-pillow = "*"
+black = "*"
 
 [requires]
 python_version = "3.11"
