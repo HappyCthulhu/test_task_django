@@ -66,6 +66,7 @@
 </details>
 
 ### Configs, utils
+* docker-compose
 * swagger
 * admin panel
 * ruff, mypy configs
