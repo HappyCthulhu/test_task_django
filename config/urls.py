@@ -29,5 +29,6 @@ urlpatterns = [
     path(f'{PREFIX}/swagger/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger'),
     path(f'{PREFIX}/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
     path(f'{PREFIX}/auth/', include('apps.authentication.urls')),
-
+    path(f'{PREFIX}/organizations/', include('apps.organizations.urls')),
+    path(f'{PREFIX}/users/', include('apps.users.urls')),
 ]
