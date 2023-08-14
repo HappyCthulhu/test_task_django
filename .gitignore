@@ -3,3 +3,4 @@ __pycache__/
 .mypy_cache/
 static/
 db.sqlite3
+documents/
