@@ -1,7 +1,9 @@
 from __future__ import annotations
 
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
+
+from apps.organizations.models import Organization
 
 
 class UserManager(BaseUserManager):
@@ -13,7 +15,7 @@ class UserManager(BaseUserManager):
             msg = 'Email is Required'
             raise ValueError(msg)
 
-        assert isinstance(self.model, User)
+        # TODO: пофиксить mypy - ошибку
         user: User = self.model(email=self.normalize_email(email), **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
@@ -28,7 +30,7 @@ class UserManager(BaseUserManager):
 
         return self.create_user(email, password, **extra_fields)
 
-class User(AbstractBaseUser):
+class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(
             unique=True,
             verbose_name="Email",
@@ -45,19 +47,26 @@ class User(AbstractBaseUser):
             max_length=4096,
             upload_to="documents",
             verbose_name="Файл",
+            null=True,
+            blank=True,
             )
     phone = models.CharField(
         max_length=12,
         blank=True,
     )
-    is_admin = models.BooleanField(
-            default=False,
-            )
+
+    organizations = models.ManyToManyField(
+            Organization,
+            verbose_name="Организации",
+    )
 
     objects = UserManager()
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["email"]  # noqa: RUF012
+
+    @property
+    def is_staff(self) -> bool:
+        return self.is_superuser
 
     class Meta:
         verbose_name = "Пользователь"
