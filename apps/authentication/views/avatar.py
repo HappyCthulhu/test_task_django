@@ -17,8 +17,6 @@ from rest_framework.status import HTTP_201_CREATED, HTTP_204_NO_CONTENT
 from apps.authentication.models import User
 from apps.authentication.serializers.avatar import AvatarSerializer
 
-# TODO: прогнать ruff консольный по всему коду
-
 if TYPE_CHECKING:
     from rest_framework.request import Request
 
@@ -41,7 +39,7 @@ def avatar(request: Request, *_args, **_kwargs) -> Response | HttpResponse:
         serializer.is_valid(raise_exception=True)
         avatar = serializer.validated_data['avatar']
 
-        filename = ''.join(choices(ascii_letters + digits, k=10))
+        filename = ''.join(choices(ascii_letters + digits, k=10)) # noqa: S311
         ext = avatar.name.split('.')[-1]
 
         new_filename = f"{filename}.{ext}"

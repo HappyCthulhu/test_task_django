@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from __future__ import annotations
 
+import os
 from datetime import timedelta
 from pathlib import Path
 
@@ -26,7 +27,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-1z_@m8^2m9qn9o^%)f)=u&+*$9zy9z#7!^%qztg)pbx*l90sh='
+SECRET_KEY = os.environ.get(
+        'SECRET_KEY', 'django-insecure-1z_@m8^2m9qn9o^%)f)=u&+*$9zy9z#7!^%qztg)pbx*l90sh=',
+        )
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -39,7 +42,6 @@ ALLOWED_HOSTS = [
 
 # Application definition
 
-# TODO: перевести на английский
 SERVICE_APPS: list[str] = [
     'django.contrib.admin',
     'django.contrib.auth',

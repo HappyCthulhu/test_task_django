@@ -1,5 +1,4 @@
-"""
-ASGI config for test_task project.
+"""ASGI config for test_task project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 

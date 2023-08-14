@@ -1,6 +1,7 @@
 [tool.ruff]
 line-length = 120
 select = ["ALL"]
+extend-exclude = ["venv", "stubs", "migrations"]
 ignore = [
     "Q", # flake8-quotes
     "D100",	# undocumented-public-module	Missing docstring in public module
@@ -19,6 +20,8 @@ ignore = [
     "ANN003", #	missing-type-kwargs	Missing type annotation for **{name}
     "RUF001", #	ambiguous-unicode-character-string	String contains ambiguous {}. Did you mean {}?
     "RUF003", #	ambiguous-unicode-character-comment
+    "D203",
+    "D212",
 ]
 
 

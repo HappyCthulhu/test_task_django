@@ -6,7 +6,7 @@ from apps.authentication.models import User
 
 model = User
 
-id = model.id.field.name
+id_ = model.id.field.name
 email = model.email.field.name
 first_name = model.first_name.field.name
 surname = model.surname.field.name
@@ -24,7 +24,7 @@ class UsersSerializer(serializers.ModelSerializer):
     class Meta:
         model = model
         fields = (
-                id,
+                id_,
                 email,
                 first_name,
                 surname,

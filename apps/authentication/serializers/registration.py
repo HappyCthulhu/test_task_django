@@ -6,10 +6,7 @@ from rest_framework import serializers
 
 from apps.authentication.models import User
 
-"""
-TODO: создать подсистему users, будет users/user
-и auth/user
-"""
+
 class RegistrationSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -25,7 +22,6 @@ class RegistrationSerializer(serializers.ModelSerializer):
                     },
                 }
 
-    # TODO: допилить внесение изменений?
     def create(self, validated_data: dict) -> User:
         user = User.objects.create(email=validated_data['email'])
         user.set_password(validated_data['password'])

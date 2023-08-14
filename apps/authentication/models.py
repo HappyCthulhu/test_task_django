@@ -15,8 +15,7 @@ class UserManager(BaseUserManager):
             msg = 'Email is Required'
             raise ValueError(msg)
 
-        # TODO: пофиксить mypy - ошибку
-        user: User = self.model(email=self.normalize_email(email), **extra_fields)
+        user: User = self.model(email=self.normalize_email(email), **extra_fields) # type: ignore # noqa: PGH003
         user.set_password(password)
         user.save(using=self._db)
         return user
