@@ -16,6 +16,7 @@ from pathlib import Path
 
 from apps.authentication.apps import AuthenticationConfig
 from apps.organizations.apps import OrganizationsConfig
+from apps.users.apps import UsersConfig
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,9 +39,10 @@ ALLOWED_HOSTS = [
 
 # Application definition
 
+# TODO: перевести на английский
 SERVICE_APPS: list[str] = [
     'django.contrib.admin',
-    'django.contrib.auth', # TODO: удалить или я все же буду использовать что-то отсюда?
+    'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -53,8 +55,9 @@ SERVICE_APPS: list[str] = [
 APPS_PREFIX = 'apps'
 
 PROJECT_APPS: list[str] = [
-    AuthenticationConfig.name, # TODO: переименовать в AuthenticationConfig
+    AuthenticationConfig.name,
     OrganizationsConfig.name,
+    UsersConfig.name,
 ]
 
 INSTALLED_APPS = SERVICE_APPS + PROJECT_APPS
