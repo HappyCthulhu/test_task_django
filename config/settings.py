@@ -11,7 +11,11 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from __future__ import annotations
 
+from datetime import timedelta
 from pathlib import Path
+
+from apps.authentication.apps import AuthenticationConfig
+from apps.organizations.apps import OrganizationsConfig
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -46,9 +50,11 @@ SERVICE_APPS: list[str] = [
     'drf_spectacular',
 ]
 
+APPS_PREFIX = 'apps'
+
 PROJECT_APPS: list[str] = [
-    'apps.authentication',
-    'apps.organizations',
+    AuthenticationConfig.name, # TODO: переименовать в AuthenticationConfig
+    OrganizationsConfig.name,
 ]
 
 INSTALLED_APPS = SERVICE_APPS + PROJECT_APPS
@@ -90,9 +96,15 @@ REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=30),
+    'AUTH_HEADER_TYPES': ('Bearer',),
+  }
+
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'Hh mailer API',
-    'DESCRIPTION': 'Project, thats allows you automate applying on HeadHunter vacancies',
+    'TITLE': 'Test Django Project',
+    'DESCRIPTION': 'Valeriy Gazarov test task',
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': True,
     "SWAGGER_UI_SETTINGS": {
@@ -101,6 +113,8 @@ SPECTACULAR_SETTINGS = {
         "displayOperationId": True,
         'SERVE_PERMISSIONS': ['rest_framework.permissions.AllowAny'],
     },
+    # Fixes file fields in Swagger UI
+    'COMPONENT_SPLIT_REQUEST': True,
 }
 
 # Database
@@ -132,7 +146,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = 'auth.User'
+AUTH_USER_MODEL = f'{AuthenticationConfig.name}.User'.replace(APPS_PREFIX+'.', '')
 
 
 # Internationalization
