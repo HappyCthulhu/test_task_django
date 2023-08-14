@@ -19,6 +19,7 @@ types-markdown = "*"
 types-pygments = "*"
 types-psycopg2 = "*"
 types-pillow = "*"
+black = "*"
 
 [requires]
 python_version = "3.11"

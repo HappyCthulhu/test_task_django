@@ -24,6 +24,14 @@ ignore = [
     "D212",
 ]
 
+[tool.black]
+line-length = 120
+single-quotes = true
+exclude = '''
+    stubs
+    migrations
+    venv
+'''
 
 [tool.ruff.flake8-annotations]
 mypy-init-return = true # ANN204 | checkers often allow you to omit the return type annotation for __init__ methods, as long as at least one argument has a type annotation
