@@ -12,7 +12,7 @@
             "localhost:8000"
         ],
         "django": true,
-        "justMyCode": true
+        "justMyCode": false
     },
     {
         "name": "Migrate",
@@ -25,4 +25,16 @@
         ],
         "django": true,
     },
+    {
+        "name": "Create SuperUser",
+        "type": "python",
+        "request": "launch",
+        "cwd": "${workspaceFolder}",
+        "program": "manage.py",
+        "args": [
+            "createsuperuser"
+        ],
+        "django": true,
+    },
+]
 }
