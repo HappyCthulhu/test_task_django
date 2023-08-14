@@ -12,4 +12,3 @@ urlpatterns = [
     path('user/', UserRetrieveUpdateAPIView.as_view(), name='retrieve_or_update_user'),
     path('user/avatar/', avatar, name='avatar'),
 ]
-

@@ -28,8 +28,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get(
-        'SECRET_KEY', 'django-insecure-1z_@m8^2m9qn9o^%)f)=u&+*$9zy9z#7!^%qztg)pbx*l90sh=',
-        )
+    'SECRET_KEY',
+    'django-insecure-1z_@m8^2m9qn9o^%)f)=u&+*$9zy9z#7!^%qztg)pbx*l90sh=',
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -105,7 +106,7 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=30),
     'AUTH_HEADER_TYPES': ('Bearer',),
-  }
+}
 
 SPECTACULAR_SETTINGS = {
     'TITLE': 'Test Django Project',
@@ -151,7 +152,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = f'{AuthenticationConfig.name}.User'.replace(APPS_PREFIX+'.', '')
+AUTH_USER_MODEL = f'{AuthenticationConfig.name}.User'.replace(APPS_PREFIX + '.', '')
 
 
 # Internationalization

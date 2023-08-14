@@ -7,7 +7,6 @@ from apps.organizations.models import Organization
 
 
 class UserManager(BaseUserManager):
-
     use_in_migration = True
 
     def create_user(self, email: str, password: str, **extra_fields) -> User:
@@ -15,7 +14,7 @@ class UserManager(BaseUserManager):
             msg = 'Email is Required'
             raise ValueError(msg)
 
-        user: User = self.model(email=self.normalize_email(email), **extra_fields) # type: ignore # noqa: PGH003
+        user: User = self.model(email=self.normalize_email(email), **extra_fields)  # type: ignore # noqa: PGH003
         user.set_password(password)
         user.save(using=self._db)
         return user
@@ -29,34 +28,35 @@ class UserManager(BaseUserManager):
 
         return self.create_user(email, password, **extra_fields)
 
+
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(
-            unique=True,
-            verbose_name="Email",
+        unique=True,
+        verbose_name="Email",
     )
     first_name = models.CharField(
-            max_length=255,
-            blank=True,
+        max_length=255,
+        blank=True,
     )
     surname = models.CharField(
-            max_length=255,
-            blank=True,
-        )
+        max_length=255,
+        blank=True,
+    )
     avatar = models.FileField(
-            max_length=4096,
-            upload_to="documents",
-            verbose_name="Файл",
-            null=True,
-            blank=True,
-            )
+        max_length=4096,
+        upload_to="documents",
+        verbose_name="Файл",
+        null=True,
+        blank=True,
+    )
     phone = models.CharField(
         max_length=12,
         blank=True,
     )
 
     organizations = models.ManyToManyField(
-            Organization,
-            verbose_name="Организации",
+        Organization,
+        verbose_name="Организации",
     )
 
     objects = UserManager()

@@ -1,4 +1,3 @@
-
 from __future__ import annotations
 
 from random import choices
@@ -39,7 +38,7 @@ def avatar(request: Request, *_args, **_kwargs) -> Response | HttpResponse:
         serializer.is_valid(raise_exception=True)
         avatar = serializer.validated_data['avatar']
 
-        filename = ''.join(choices(ascii_letters + digits, k=10)) # noqa: S311
+        filename = ''.join(choices(ascii_letters + digits, k=10))  # noqa: S311
         ext = avatar.name.split('.')[-1]
 
         new_filename = f"{filename}.{ext}"
@@ -55,7 +54,6 @@ def avatar(request: Request, *_args, **_kwargs) -> Response | HttpResponse:
         return Response(status=HTTP_201_CREATED)
 
     if request.method == 'GET':
-
         if user.avatar:
             response = HttpResponse(user.avatar, content_type='application/octet-stream')
             file_name = user.avatar.name.split('/')[-1]
@@ -66,4 +64,3 @@ def avatar(request: Request, *_args, **_kwargs) -> Response | HttpResponse:
 
     assert request.method is not None
     raise MethodNotAllowed(request.method)
-

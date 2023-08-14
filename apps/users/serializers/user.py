@@ -14,21 +14,21 @@ avatar = model.avatar.field.name
 phone = model.phone.field.name
 organizations = model.organizations.field.name
 
-class UsersSerializer(serializers.ModelSerializer):
-    """Спорное решение, но давно хотел попробовать.
 
-    Таким образом изменения названия поля модели будут автоматически
-    подтягиваться в сериализатор
+class UsersSerializer(serializers.ModelSerializer):
+    """Controversial decision, but I've been wanting to try it for a while.
+
+    This way, changes in the model field name will be automatically reflected in the serializer.
     """
 
     class Meta:
         model = model
         fields = (
-                id_,
-                email,
-                first_name,
-                surname,
-                avatar,
-                phone,
-                organizations,
-    )
+            id_,
+            email,
+            first_name,
+            surname,
+            avatar,
+            phone,
+            organizations,
+        )

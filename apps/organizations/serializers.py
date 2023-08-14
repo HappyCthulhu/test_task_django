@@ -12,6 +12,4 @@ class OrganizationSerializer(ModelSerializer):
             'short_name',
         )
 
-        read_only_fields = (
-                'id',
-                )
+        read_only_fields = ('id',)
