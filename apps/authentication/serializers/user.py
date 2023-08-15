@@ -2,8 +2,6 @@ from rest_framework import serializers
 
 from apps.authentication.models import User
 
-# TODO: через black прогнать
-
 
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(
